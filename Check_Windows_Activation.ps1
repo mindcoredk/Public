@@ -14,13 +14,13 @@ Try
     if ($LicenseState.LicenseStatus -eq 1 -or $LicenseState.LicenseStatus -eq 5)
     {
         #Exit 0 for machine licensed.
-        Write-Host "No_Match"            
+        Write-Host "Activated"            
         exit 0
     }
     else 
     {
         #Exit 1 for machine not licensed correctly
-        Write-Host "Match"
+        Write-Host "NOT_Activated"
         exit 1        
     }
 
