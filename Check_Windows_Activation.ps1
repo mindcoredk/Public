@@ -11,17 +11,17 @@ Try
 {
     $LicenseState = Get-CimInstance -ClassName SoftwareLicensingProduct | where {$_.PartialProductKey -and $_.name -like "Windows*"}
 
-    if ($LicenseState.LicenseStatus -ne 1 -or $LicenseState.LicenseStatus -ne 5)
-    {
-        #Exit 1 for machine not licensed correctly
-        Write-Host "Match"
-        exit 1
-    }
-    else 
+    if ($LicenseState.LicenseStatus -eq 1 -or $LicenseState.LicenseStatus -eq 5)
     {
         #Exit 0 for machine licensed.
         Write-Host "No_Match"            
         exit 0
+    }
+    else 
+    {
+        #Exit 1 for machine not licensed correctly
+        Write-Host "Match"
+        exit 1        
     }
 
 }
